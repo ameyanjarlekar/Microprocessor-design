@@ -1,0 +1,61 @@
+# EE309 IITB-RISC
+EE309 Microprocessors Course Project
+
+## Team Members
+1. Amey 170070013
+2. Preetam 170070042 
+3. Rishi 170070044
+4. Ram Prakash 170070047
+
+## Comments
+
+1. Only forwarding and stalls used to handle hazards
+2. PC+1 of the instruction (in the write-back stage) is stored in R7
+3. Forwarding of PC value to R7 isn't implemented
+4. Z-flag is not set by LW instruction
+5. Writing into R7 doesn't change the control-flow
+
+## Files
+
+1. datapath_v2.pdf contains the diagram of datapath
+2. datapath.ods contains the description of datapath
+3. forwarding_logic.ods describes the forwarding mechanism implemented
+
+## Component List
+
+### ARITHEMATIC UNIT
+1. `adder16.vhdl`: 16-bit adder
+2. `nandbit.vhdl`: 16-bitwise NAND
+3. `alu.vhdl`: combination of ADD and NAND with flag registers (C,Z flags)
+4. `adder16Cin.vhdl`: 16-bit adder with input carry
+
+### MULTIPLEXERS
+#### 1-bit Devices
+1. `Mux1_2_1.vhdl`: 2-to-1 MUX
+2. `Mux1_4_1.vhdl`: 4-to-1 MUX
+#### 3-bit Devices
+1. `Mux3_2_1.vhdl`: 2-to-1 MUX
+2. `Mux3_4_1.vhdl`: 4-to-1 MUX
+#### 16-bit Devices
+1. `Mux16_2_1.vhdl`: 2-to-1 MUX
+2. `Mux16_4_1.vhdl`: 4-to-1 MUX
+
+### REGISTERS
+1. `Register1.vhdl`: 1-bit register with synchronous write and ascynchonous read
+2. `Register16.vhdl`: 16-bit register with synchronous write and ascynchonous read
+3. `Register_file.vhdl`: Set of 8 16-bit registers
+
+### MEMORY UNIT
+`Memory_asyncread_syncwrite.vhd`
+
+### FSM
+1. `fsm_if.vhdl`: Fetch stage FSM
+2. `fsm_id.vhdl`: Decode stage FSM
+3. `fsm_rr.vhdl`: Register read stage FSM
+4. `fsm_ex.vhdl`: Execution stage FSM
+5. `fsm_mem.vhdl`: Memory stage FSM
+6. `fsm_wb.vhdl`: Write back stage FSM
+
+
+### DUT
+`iitb_proc.vhdl`: Main code
